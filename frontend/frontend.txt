@@ -1,1 +1,1 @@
-frontend folder fro ecommerce shop .plz make another folder for admin page
+frontend folder for ecommerce shop .plz make another folder for admin page
