@@ -120,42 +120,7 @@ nav ul li a {
   font-size: 18px;
   border-radius: 5px;
 }
-.product {
-  padding: 20px;
-  text-align: center;
-  border-bottom: 1px solid #e8491d;
-}
-.product-list {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-.products {
-  background-color: white;
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin: 10px;
-  width: 200px;
-  text-align: center;
-  border-radius: 5px;
-}
-.F-products h2 {
-  background-color: white;
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin: 10px;
-  max-width: 2000px;
-  text-align: center;
-  border-radius: 5px;
-}
-.product img {
-  width: 100%;
-  height: auto;
-}
-.product h3 {
-  font-size: 20px;
-  margin: 10px 0;
-}
+
 footer {
   background-color: #333;
   color: white;

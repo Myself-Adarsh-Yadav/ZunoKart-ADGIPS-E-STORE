@@ -5,79 +5,941 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZunoKart-ADGIPS-E-STORE</title>
   <link rel="stylesheet" href="homepage.css">
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  font-family: "Assistant","Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: #3e4152;
+}
+
+body {
+  background-color: #f9f9f9;
+}
+
+ul, a {
+  text-decoration: none;
+  list-style: none;
+}
+
+header {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+nav {
+  background-color: #ffffff;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
+}
+
+nav #logo {
+  height: 40px;
+  width: 40px;
+}
+
+/* 🌙 DARK MODE STYLES */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode nav {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+body.dark-mode #navigation li {
+  color: #ffffff;
+}
+
+body.dark-mode #searchBar input,
+body.dark-mode #newsletter input {
+  background-color: #333;
+  color: white;
+  border: 1px solid #666;
+}
+
+body.dark-mode #searchBar button,
+body.dark-mode #newsletter button {
+  background-color: #222;
+  color: white;
+}
+
+body.dark-mode .product,
+body.dark-mode .categories,
+body.dark-mode .testimonial-card,
+body.dark-mode #highlight,
+body.dark-mode #stats,
+body.dark-mode #testimonials {
+  background-color: #1f1f1f;
+  color: white;
+  border: 1px solid #333;
+}
+
+body.dark-mode .btn,
+body.dark-mode #viewbtn {
+  background-color: #333;
+  color: white;
+  border-color: white;
+}
+
+body.dark-mode .btn:hover,
+body.dark-mode #viewbtn:hover {
+  background-color: white;
+  color: black;
+}
+
+body.dark-mode footer,
+body.dark-mode #foot1 {
+  background-color: #000;
+  color: white;
+}
+
+body.dark-mode .underline-link::after {
+  background-color: white;
+}
+
+#toggleDarkMode {
+  border: none;
+  border-radius: 50px;
+  font-size: 17px;
+  padding: 5px;
+
+}
+
+#sideBar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+#searchBar {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+#searchBar input {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: 1px solid black;
+  outline: none;
+}
+
+#searchBar button {
+  margin: 5px;
+  width: 35px;
+  height: 35px;
+  border-radius: 20px;
+  background-color: #fff;
+  color: black;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+#searchBar button:active {
+  transform: rotate3d(1, 1, 0, 180deg);
+}
+
+#searchBar img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+#icons {
+  display: flex;
+  gap: 1rem;
+}
+
+#icons img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.4s;
+}
+
+#icons img:hover {
+  transform: scale3d(1.2, 1.2, 1.2);
+}
+
+#icons img:active {
+  transform: scale3d(0.9, 0.9, 0.9);
+}
+
+nav a {
+  color: black;
+}
+
+.underline-link {
+  position: relative;
+  color: #333;
+  font-weight: 500;
+}
+
+.underline-link::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  left: 0;
+  bottom: -2px;
+  background-color: black;
+  transition: width 0.3s;
+}
+
+.underline-link:hover::after {
+  width: 100%;
+}
+
+#navigation ul, #sideBar ul {
+  display: flex;
+  gap: 1.5rem;
+}
+
+#heroSection {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.5)), url('assets/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+#ctaBtn {
+  margin-top: 1rem;
+  padding: 0.8rem 2rem;
+  background-color: #ffffff;
+  color: black;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+#ctaBtn:active, .btn:active {
+  transform: scale3d(0.9, 0.9, 0.9);
+}
+
+#categoriesSection {
+  padding: 2rem;
+  text-align: center;
+}
+
+#categoriesSection h1 {
+  font-weight: 400;
+  font-size: clamp(1.2rem, 4vw, 2rem);
+}
+
+.categories {
+  display: inline-block;
+  margin: 1rem;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  background-color: white;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.categories:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+}
+
+.categories img {
+  width: 200px;
+  height: 250px;
+  border-radius: 8px;
+}
+
+.categories p {
+  margin-top: 0.5rem;
+  color: black;
+}
+
+/* Featuring Products*/
+.products {
+  text-align: center;
+  background: #f9f9f9;
+  margin-bottom: 10px;
+  padding: none;
+}
+
+.products h1 {
+  margin-bottom: 30px;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 4vw, 2rem);
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  justify-items: center;
+}
+
+.product {
+  border: 1px solid black;
+  background: white;
+  width: 100%;
+  max-width: 260px;
+  padding: 10px;
+}
+
+.wishList {
+  color: red;                 /* visible heart */
+  display: flex;
+  justify-content: flex-start;
+  border: none;
+  border-radius: 2px;
+  background-color: white; 
+  font-size: 1.2rem;          /* optional: adjust size */
+  cursor: pointer;
+}
+
+.wishMessage {
+  color: green;
+  font-size: 0.9rem;
+  margin-left: 10px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.wishMessage.show, .wishMessage.hide {
+  opacity: 1;
+}
+
+.product:hover  img{
+  transform: scale3d(1.1, 1.1, 1.1);
+}
+
+.product img {
+  padding: 5px;
+  width: 180px;
+  height: auto;
+  margin-bottom: 10px;
+  transition: transform 0.5s ease,;
+}
+
+.product h3 {
+  font-size: 1.1rem;
+  margin: 10px 0 5px;
+}
+
+.product p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.stars {
+  font-size: 1rem;
+  color: #ffcc00;
+  margin: 5px 0;
+}
+
+.quick-view {
+  background-color: black;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 20px;
+  margin-bottom: 2px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.product:hover .quick-view {
+  opacity: 1;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background: #fff;
+  color: black;
+  border: 1px solid black;
+  text-decoration: none;
+  border-radius: 15px;
+  transition: background 0.3s, transform 0.3s;
+  width: 100%;
+  max-width: 230px;
+}
+
+.btn:hover {
+  background: black;
+  color: white;
+}
+
+#viewbtn {
+  background: white;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px;
+  width: 150px;
+  margin-top: 15px;
+  transition: background 0.3s;
+}
+
+#viewbtn:hover {
+  background: black;
+  color: white;
+}
+
+/*Why choose Us*/
+#highlight {
+  background-color: #ffffff;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+#highlight h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+#highlight ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+#highlight li {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  width: 250px;
+  font-size: 1rem;
+  color: #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#highlight li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Stats */
+#stats {
+  text-align: center;
+  background: #fff;
+  padding: 3rem 1.5rem;
+}
+
+#stats h2 {
+  font-size: 2rem;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
+#stats p {
+  font-size: 1rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.stat-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.stat-cards div {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  width: 220px;
+  font-size: 1.1rem;
+  color: #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-cards div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+
+
+/* Testimonials */
+#testimonials {
+  background-color: #fff;
+  padding: 2rem;
+  text-align: center;
+}
+
+.testimonial-card {
+  margin: 1rem auto;
+  max-width: 600px;
+  background-color: #f3f3f3;
+  padding: 1rem;
+  border-radius: 10px;
+  font-style: italic;
+}
+
+footer {
+  color: white;
+}
+
+#foot1 {
+  background: #1a1a1a;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 2rem 1rem;
+  gap: 2rem;
+}
+
+footer h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #f9f9f9;
+  text-transform: uppercase;
+}
+
+footer a {
+  color: white;
+  display: block;
+  margin-bottom: 5px;
+}
+
+#foot2 {
+  background: #000;
+  text-align: center;
+  padding: 1rem;
+}
+
+#socialLinks {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+#socialLinks a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#newsletter {
+  text-align: center;
+  padding: 2rem;
+  background-color: #eee;
+}
+
+#newsletter input {
+  padding: 0.5rem;
+  width: 300px;
+  max-width: 80%;
+}
+
+#newsletter button {
+  padding: 0.5rem 1rem;
+  background-color: #002f34;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Tablet screens */
+@media screen and (max-width: 768px) {
+  .stat-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #navigation ul, #sideBar ul {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0;
+  }
+
+  #heroSection {
+    padding: 2rem 1rem;
+  }
+
+  #ctaBtn {
+    width: 100%;
+  }
+
+  .categories {
+    display: block;
+    margin: 1rem auto;
+    width: 80%;
+  }
+
+  #socialLinks {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .product-list {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .product {
+    max-width: 90%;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* Mobile screens */
+@media screen and (max-width: 480px) {
+  nav {
+    padding: 1rem;
+    align-items: center;
+  }
+
+  nav #logo {
+    height: 80px;
+    width: 80px;
+  }
+
+  #searchBar input {
+    width: 180px;
+    font-size: 14px;
+  }
+
+  #searchBar button {
+    width: 30px;
+    height: 30px;
+  }
+
+  #icons img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .product-list {
+    grid-template-columns: 1fr;
+  }
+
+  .categories {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .categories img {
+    width: 100%;
+    height: auto;
+  }
+
+  .product {
+    margin: 0 auto;
+  }
+
+  .btn, #viewbtn {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  #newsletter input,
+  #newsletter button {
+    width: 90%;
+    margin-top: 0.5rem;
+  }
+
+  .testimonial-card {
+    font-size: 14px;
+  }
+}
+
+  </style>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+  </style>
 </head>
 <body>
+
   <header>
     <nav>
-      <a href="homepage.html">ZunoKart</a>
+      <a href="homepage.html"><img id="logo" src="logo.png" alt="ZunoKart-Logo"></a>
     <div id="navigation">
       <ul>
-        <li><a href="homepage.html">Home</a></li>
-        <li><a href="categories.html">Categories</a></li>
-        <li><a href="postProduct.html">Sell Your Product</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a class="underline-link" href="homepage.html">HOME</a></li>
+        <li><a class="underline-link" href="categories.html">BUY</a></li>
+        <li><a class="underline-link" href="https://forms.gle/uqNd6CMznYCwkfYZA" target="_blank">SELL</a></li>
+        <li><a class="underline-link" href="contact.html">ABOUT US</a></li>
       </ul>
     </div>
     <div id="sideBar">
-      <ul>
-        <li><a href="#">Search</a></li>
-        <li><a href="#">Account</a></li>
-        <li><a href="#">Cart</a></li>
-      </ul>
-    </div>
+      <button id="toggleDarkMode">🌙</button>
+  <div id="searchBar">
+    <input type="text" placeholder="Search products..." />
+    <button><img src="search.png" alt="Search Button"></button>
+  </div>
+  <div id="icons">
+    <img src="accont.png" alt="account-icon">
+    <img src="cart.png" alt="cart-icon">
+  </div>
+</div>
+
   </nav>
   </header>
+
   <section id="heroSection">
     <h2>Buy and Sell Academic Essentials at ADGIPS</h2>
-    <button id="ctaBtn">Browse Product</button>
+    <button id="ctaBtn">SHOP NOW</button>
   </section>
+
+  <section class="products">
+  <h1>FEATURING PRODUCT</h1>
+    <div class="product-list">
+      <div class="product">
+        <button class="wishList">🖤</button>
+        <span class="wishMessage"></span>
+        <img src="drafter.png" alt="Product 1">
+        <div class="stars">★★★★☆</div>
+      <button class="quick-view">Quick View</button>
+        
+        <h3>Mini Drafter</h3>
+        <p>₹ 149.00</p>
+        <button class="btn">ADD TO CART</button>
+      </div>
+      <div class="product">
+        <button class="wishList">🖤</button>
+        <span class="wishMessage"></span>
+        <img src="holder.png" alt="Product 2">
+        <div class="stars">★★★★☆</div>
+      <button class="quick-view">Quick View</button>
+        <h3>Sheet Holder</h3>
+        <p>₹ 149.00</p>
+        <button class="btn">ADD TO CART</button>
+      </div>
+      <div class="product">
+        <button class="wishList">🖤</button>
+        <span class="wishMessage"></span>
+        <img src="calculator.webp" alt="Product 3">
+        <div class="stars">★★★★☆</div>
+      <button class="quick-view">Quick View</button>
+        <h3>Calculator</h3>
+        <p>₹ 599.00</p>
+        <button class="btn">ADD TO CART</button>
+      </div>
+      <div class="product">
+        <button class="wishList">🖤</button>
+        <span class="wishMessage"></span>
+        <img src="books.jpg" alt="Product 4">
+        <div class="stars">★★★★☆</div>
+      <button class="quick-view">Quick View</button>
+        <h3>Applied Mathematics</h3>
+        <p>₹ 399.00</p>
+        <button class="btn">ADD TO CART</button>
+      </div>
+    </div>
+    <button id="viewbtn">VIEW ALL</button>
+  </section>
+
   <section id="categoriesSection">
-    <h1>Categories</h1>
+    <h1>CATEGORIES</h1>
     <div class="categories">
-      <img src="books.png" alt="Books-Image">
-      <p>Books</p>
+      <a href="#">
+        <img src="books.jpg" alt="Books-Image">
+        <p>Books</p>
+      </a>
     </div>
     <div class="categories">
-      <img src="notes.png" alt="Notes-Image">
-      <p>Notes</p>
+      <a href="#">
+        <img src="drafter.png" alt="EGL-Image">
+        <p>EGL Tools</p>
+      </a>
     </div>
     <div class="categories">
-      <img src="calculator.png" alt="Calculator-Image">
-      <p>Calculators</p>
+      <a href="#">
+        <img src="calculator.webp" alt="Calculator-Image">
+        <p>Calculators</p>
+      </a>
     </div>
     <div class="categories">
-      <img src="electronics.png" alt="Electronics">
-      <p>Electronics</p>
+      <a href="#">
+        <img src="electronics.png" alt="Electronics">
+        <p>Electronics</p>
+      </a>
     </div>
     <div class="categories">
-      <img src="fashion.png" alt="Fashion-Image">
-      <p>Fashion</p>
+      <a href="#">
+        <img src="fashion.jpeg" alt="Fashion-Image">
+        <p>Fashion</p>
+      </a>
     </div>
   </section>
+
   <section id="highlight">
-    <h1>Why Use ZunoKart?</h1>
+    <h2>Why Choose ZunoKart?</h2>
     <ul>
-      <li>Easy to Use</li>
-      <li>Student-Friendly</li>
-      <li>Verified Seller</li>
+      <li><strong>🚀 First of Its Kind</strong> <br> ZunoKart is the first platform built exclusively to serve ADGIPS students’ academic buying and selling needs.</li>
+      <li><strong>🎯 Easy to Use</strong> <br> Post your product or browse listings in just a few clicks.</li>
+      <li><strong>🎓 Built for Students</strong> <br> Designed specifically for ADGIPS students to buy and sell academic items easily.</li>
+      <li><strong>✅ Verified Sellers Only</strong> <br> We ensure every seller is genuine, so you can shop with confidence.</li>
+      <li><strong>💸 Affordable Finds</strong><br> Get essential tools and books at half the price — or sell what you no longer use.</li>
+      <li><strong>📦 Quick Deals</strong> <br> Connect directly with fellow students and close your deals faster than ever.</li>
     </ul>
   </section>
-  <footer>
-    <div id="socialLinks">
-      <div id="link">
-        <a href="#">GitHub logo</a>
-      </div>
-      <div id="link">
-        <a href="#">Instagram logo</a>
-      </div>
-      <div id="link">
-        <a href="#">X(Twitter) logo</a>
-      </div>
-      <div id="link">
-        <a href="#">LinkedIn logo</a>
-      </div>
+
+
+  <section id="stats">
+    <h2>Our Impact at ADGIPS</h2>
+    <p>ZunoKart is proud to support our campus community by making academic buying and selling smarter, cheaper, and faster.</p>
+    <div class="stat-cards">
+      <div>📚 <strong>250+</strong> Products Listed</div>
+      <div>👩‍🎓 <strong>150+</strong> Students Helped</div>
+      <div>🛍️ <strong>20+</strong> Verified Sellers</div>
     </div>
-  </footer>
+  </section>
+
+
+  <section id="testimonials">
+  <h2>What Students Say</h2>
+    <div class="testimonial-card">
+      <p>"ZunoKart helped me sell my old books in just 2 days!"</p>
+      <span>- Riya, CSE 3rd Year</span>
+    </div>
+    <div class="testimonial-card">
+      <p>"Got a scientific calculator for half the price. Amazing!"</p>
+      <span>- Ankit, IT 2nd Year</span>
+    </div>
+  </section>
+
+  <section id="newsletter">
+      <h2>Stay Updated</h2>
+      <input type="email" placeholder="Enter your email">
+      <button>Subscribe</button>
+  </section>
+
+<footer>
+  <section id="foot1">
+    <div>
+      <h2>Get to Know Us</h2>
+      <ul>
+        <li><a href="#">About ZunoKart</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press Release</a></li>
+        <li><a href="#">ZunoKart Science</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Connect with Us</h2>
+      <ul>
+        <li><a href="#">GitHub</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Make Money with Us</h2>
+      <ul>
+        <li><a href="#">Sell on ZunoKart</a></li>
+        <li><a href="#">Protect and Build Your Brand</a></li>
+        <li><a href="#">Supply to ZunoKart</a></li>
+        <li><a href="#">Become an Affiliate</a></li>
+        <li><a href="#">Fulfilment by ZunoKart</a></li>
+        <li><a href="#">Advertise Your Product</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Let Us Help You</h2>
+      <ul>
+        <li><a href="#">Your Account</a></li>
+        <li><a href="#">Return Center</a></li>
+        <li><a href="#">Recalls and Product Safety Alerts</a></li>
+        <li><a href="#">100% Purchase Protection</a></li>
+        <li><a href="#">ZunoKart App Download</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="foot2">
+    <div>
+      <p><a href="#">Condition of Use and Sale</a></p>
+      <p><a href="#">Privacy Notice</a></p>
+      <p><a href="#">Interest-Based Ads</a></p>
+      <p>&copy;2025, ZunoKart.in All Rights Reserved</p>
+    </div>
+  </section>
+</footer>
+
   <script src="homepage.js"></script>
+  <script>
+
+    const wishLists = document.querySelectorAll(".wishList");
+
+wishLists.forEach(wishList => {
+  wishList.addEventListener("click", event => {
+    const btn = event.target;
+    const message = btn.nextElementSibling;
+
+    // Toggle heart
+    if (btn.textContent === "🖤") {
+      btn.textContent = "❤️";
+      message.textContent = "Added to Wishlist";
+    message.classList.add("show");
+
+    // Hide after 2 seconds
+    setTimeout(() => {
+      message.classList.remove("show");
+      message.textContent = "";
+    }, 2000);
+
+    } else {
+      btn.textContent = "🖤";
+      message.style.color = "red";
+      message.textContent = "Removed from Wishlist";
+    message.classList.add("hide");
+
+    // Hide after 2 seconds
+    setTimeout(() => {
+      message.classList.remove("hide");
+      message.textContent = "";
+    }, 2000);
+    }
+  });
+});
+
+  const toggleDarkMode = document.getElementById("toggleDarkMode");
+
+  toggleDarkMode.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    
+    // Optional: change button icon/text
+    if (document.body.classList.contains("dark-mode")) {
+      toggleDarkMode.textContent = "☀️";
+    } else {
+      toggleDarkMode.textContent = "🌙";
+    }
+  });
+</script>
+
 </body>
 </html>
